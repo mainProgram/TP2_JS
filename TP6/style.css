@@ -1,0 +1,206 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  width: 50%;
+  padding-top: 1%;
+  margin: auto;
+  background-color: #cfcaca;
+}
+
+header {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+}
+
+header input {
+  color: #000;
+  background-color: rgba(161, 157, 157, 0.4);
+  font-size: 1em;
+  padding: 1em;
+  width: 30%;
+  border-radius: 5px;
+  border: none;
+}
+
+header input:focus {
+  outline: none;
+}
+
+header i {
+  margin-left: 1%;
+  font-size: 25px;
+  color: #cfcaca;
+  cursor: pointer;
+}
+
+header .btns {
+  position: absolute;
+  left: 4%;
+}
+
+header .btns a {
+  color: #cfcaca;
+  text-decoration: none;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+header .btns a:hover {
+  color: #000;
+}
+
+main {
+  background-color: white;
+}
+
+main .content {
+  -webkit-box-shadow: 0 0 6px 6px #cfcaca;
+          box-shadow: 0 0 6px 6px #cfcaca;
+}
+
+main .fav-recipe {
+  background-color: #cf98cf;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1% 0;
+}
+
+main .fav-recipe img {
+  height: 100px;
+  margin: 1% 0;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+main .fav-recipe h4 {
+  font-weight: 100;
+}
+
+main .recipe {
+  padding: 1em;
+  overflow: hidden;
+}
+
+main .recipe img {
+  width: 100%;
+  height: 550px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .recipe button {
+  background-color: white;
+  position: absolute;
+  top: 35%;
+  left: 25.8%;
+  padding: .7em 1em;
+  border: none;
+  outline: none;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+main .recipe .title {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 1em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  bottom: 5%;
+}
+
+main .recipe .title i {
+  cursor: pointer;
+  color: rgba(161, 157, 157, 0.4);
+  font-size: 25px;
+}
+
+main .recipe .infos {
+  position: absolute;
+  display: none;
+  top: 5%;
+  height: 90vh;
+  width: 47vw;
+  padding: 2em;
+  border: 2px solid #cfcaca;
+  background-color: white;
+}
+
+main .recipe .infos .title2 {
+  background-color: white;
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .recipe .infos .title2 h1 {
+  margin-bottom: 1%;
+}
+
+main .recipe .infos .title2 i {
+  position: absolute;
+  cursor: pointer;
+  left: 95%;
+  font-size: 20px;
+  top: 2%;
+}
+
+main .recipe .infos p {
+  padding: 2% 1%;
+}
+
+main .recipe .infos h2 {
+  margin: 1% 0;
+}
+
+main .recipe .infos ul {
+  list-style-type: disc !important;
+}
+
+main .recipe .infos li {
+  padding: 1%;
+}
+
+ul {
+  list-style: circle;
+}
+/*# sourceMappingURL=style.css.map */
