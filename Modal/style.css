@@ -1,0 +1,224 @@
+@charset "UTF-8";
+/* google fonts -> select -> embed -> copy */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+/*durée d'apparition du modal*/
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*Gérer les débordements**/
+  font-family: "lato", "sans-serif";
+  padding: 0;
+  margin: 0;
+}
+
+button, svg {
+  cursor: pointer;
+}
+
+/* -----------------SIDE BAR----------- !!!! */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background-color: #30336b;
+  height: 100vh;
+  border-right: 2px solid rgba(200, 200, 200, 0.1);
+  position: fixed;
+  /*image fixée totalement a gauche*/
+  z-index: 10;
+  /*superposition des éléments, il sera au-dessus*/
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+nav .logo {
+  text-align: center;
+}
+
+nav img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+nav ul li {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.1);
+  width: 95%;
+  padding: 20px;
+}
+
+nav ul li:first-of-type {
+  border-top: 2px solid rgba(200, 200, 200, 0.1);
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* -----------------Container----------- !!!! */
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.container header {
+  background-color: #30336b;
+  color: white;
+  height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container header h1 {
+  font-size: 120px;
+}
+
+.container header svg {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.container header p {
+  font-size: 1.5em;
+}
+
+.container header .signup {
+  background-color: #be2edd;
+  padding: .8em 2em;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+.container .body {
+  height: 60%;
+  width: 40%;
+  margin: auto;
+}
+
+.container .body h2 {
+  margin: 2% 0;
+}
+
+.container .body ul {
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+/* -----------------MODAL----------- !!!! */
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 400px;
+}
+
+.modal .modal-header {
+  background-color: #30336b;
+  color: #fff;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal .modal-content {
+  padding: 20px;
+}
+
+.modal .modal-form div {
+  margin: 15px 0;
+}
+
+.modal label {
+  display: block;
+  /*affiche que ca sur la ligne = br rek*/
+  margin-bottom: 5px;
+}
+
+.modal .form-input {
+  padding: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.modal input[type="submit"] {
+  background-color: #be2edd;
+  padding: .6em;
+  border-radius: 10px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.show-modal {
+  display: block;
+}
+
+.show-nav {
+  -webkit-transform: translate(200px);
+          transform: translate(200px);
+}
+/*# sourceMappingURL=style.css.map */

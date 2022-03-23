@@ -1,0 +1,144 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: sans-serif;
+}
+
+.container {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+}
+
+button, a {
+  padding: .8em;
+  border-radius: 10px;
+  outline: none;
+  -webkit-box-shadow: 1px 1px 1px black;
+          box-shadow: 1px 1px 1px black;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+}
+
+button:hover, a:hover {
+  color: black !important;
+}
+
+button[value="green"] {
+  border: 1px solid green;
+  background-color: green;
+}
+
+button[value="blue"] {
+  border: 1px solid #3991e4;
+  background-color: #3991e4;
+}
+
+button[value="red"] {
+  border: 1px solid red;
+  background-color: red;
+}
+
+button[value="orange"] {
+  border: 1px solid orange;
+  background-color: orange;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 70%;
+  height: 20%;
+  margin-right: 20%;
+  padding: 3.5%;
+}
+
+.notifications {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  height: 70%;
+}
+
+.notifications span {
+  padding: .5% 3%;
+  padding-top: 5%;
+  font-size: 1.2em;
+  width: 20%;
+  color: #000;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-bottom: 2%;
+  text-align: center;
+  border: 1px solid;
+  border: none;
+}
+
+.notifications #green {
+  background-color: green;
+}
+
+.notifications #red {
+  background-color: red;
+}
+
+.notifications #orange {
+  background-color: orange;
+}
+
+.notifications #blue {
+  background-color: #3991e4;
+}
+
+.btns {
+  height: 10%;
+  width: 20%;
+  margin-left: 7%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.btns a {
+  text-decoration: none;
+  border: 1px solid purple;
+  background-color: purple;
+  margin-left: 1%;
+}
+/*# sourceMappingURL=style.css.map */

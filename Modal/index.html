@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side bar Menu & Modal</title>
+    <!-- Preferable de coller le lien de licone avant celui du css
+    Comment trouver ce lien ? on recherche : "font awesome 5 cdn apres cela on selectionne styling puis on copie le link tag du tout premier" -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="show-nav">
+    <nav>
+        <div class="logo">
+            <img src="https://api.randomuser.me/portraits/women/30.jpg" alt="user">
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <section class="container">
+        <header>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" stroke="white" class="bi bi-list" viewBox="0 0 16 16" class="toggle" id="toggle">
+                    <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+    
+            <h1>I.O.C</h1>
+    
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, laudantium.</p>
+        
+            <button class="signup" id="signup">Sign Up</button>
+        </header>
+
+        <div class="body">
+            <h2>What About IOC ?</h2>    
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate rem minima unde quo tempora beatae obcaecati natus nam, rerum cupiditate eligendi animi quae quidem ab blanditiis voluptates voluptas eos? Eveniet!</p>
+        
+            <h2>Tell Me More</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit omnis dignissimos quae provident saepe quos, vero assumenda possimus sequi dolor! Quisquam voluptate ducimus dolorum quod vero debitis eum labore atque.</p>
+      
+            <h2>Languages</h2>
+            <ul>
+                <li>PHP</li>
+                <li>Java</li>
+                <li>Ecma Script</li>
+            </ul>
+            
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat natus quo, numquam obcaecati, voluptatem ipsa eveniet quae pariatur dolor, nisi voluptatum. Exercitationem animi maiores quibusdam ipsum perspiciatis saepe qui omnis unde ea ab, perferendis, ipsam, vero fuga laboriosam fugit totam id consectetur quos culpa. Ratione, id? Impedit nulla maiores velit.</p>
+        </div>
+    </section>
+
+
+    <!-- Je réalise le modal  -->
+    <div class="modal-container" id="modal">
+        <div class="modal">
+            
+            <div class="modal-header">
+                <h3>Sign Up</h3>
+                <svg class="close-btn" id="close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+            </div>
+
+            <div class="modal-content">
+                <p>Register to get more offers</p>
+                <form class="modal-form">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter Name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" placeholder="Enter Mail" class="form-input">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="text" id="password" placeholder="Enter Password" class="form-input">
+                    </div>
+                    <div>
+                        <label for="password2">Confirm Password</label>
+                        <input type="text" id="password2" placeholder="Confirm Password" class="form-input">
+                    </div>
+                    <input type="submit" value="Submit" class="submit-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

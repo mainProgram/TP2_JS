@@ -1,0 +1,198 @@
+/* google fonts -> select -> embed -> copy */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+// body{
+//     /* La facon, le temps que met le side bar pour s'afficher */
+//      transition: transform 0.3s ease;
+// }
+$modal-duration : 1s;  /*durée d'apparition du modal*/
+$mauve : #30336b;
+$mauveClair : #be2edd;
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;  /*Gérer les débordements**/
+    font-family : "lato", "sans-serif";
+    padding: 0;
+    margin: 0;
+}
+button, svg{
+  cursor: pointer;
+}
+/* -----------------SIDE BAR----------- !!!! */
+nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: $mauve;
+    height: 100vh;
+    border-right: 2px solid rgba(200, 200, 200, 0.1);
+    position: fixed; /*image fixée totalement a gauche*/
+    z-index: 10; /*superposition des éléments, il sera au-dessus*/
+    transform: translateX(-100%); 
+
+    .logo{
+        text-align: center;
+    }
+
+    img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+        margin: 0;
+    }
+      
+    ul li {
+        border-bottom: 2px solid rgba(200, 200, 200, 0.1);
+        width: 95%;
+        padding: 20px;
+    }
+      
+    ul li:first-of-type {
+        border-top: 2px solid rgba(200, 200, 200, 0.1);
+    }
+      
+    ul li a {
+        text-decoration: none;
+        color: #fff;
+    }
+      
+    ul li a:hover {
+        text-decoration: underline;
+    }
+}
+
+/* -----------------Container----------- !!!! */
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    header{
+        background-color: $mauve;
+        color: white;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        h1{
+            font-size: 120px;
+        }
+        
+        svg{
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+        
+        p{
+            font-size: 1.5em;
+        }
+        .signup{
+            background-color: $mauveClair;
+            padding: .8em 2em;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            outline: none;
+        }
+    }
+
+    .body{
+        height: 60%;
+        width: 40%;
+        margin: auto;
+        h2{
+            margin: 2% 0;
+        }
+        ul{
+            margin-left: 5%;
+            margin-bottom: 2%;
+        }
+    }
+}
+
+/* -----------------MODAL----------- !!!! */
+.modal-container{
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.modal{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 100%;
+    width: 400px;
+
+    .modal-header{
+        background-color: $mauve;
+        color:#fff;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+    }  
+
+    .modal-content{
+        padding: 20px;
+    }
+
+    .modal-form div{
+        margin: 15px 0;
+    }
+    
+    label{
+        display: block; /*affiche que ca sur la ligne = br rek*/
+        margin-bottom: 5px;
+    }
+
+    .form-input{
+        padding: 8px;
+        width: 100%;
+        outline: none;
+    }      
+
+    input[type="submit"]{
+        background-color: $mauveClair;
+        padding: .6em;
+        border-radius: 10px;
+        color: white;
+        font-size: 1em;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+.show-modal{
+    display: block;
+}
+
+.show-nav{
+    transform: translate(200px);
+}
