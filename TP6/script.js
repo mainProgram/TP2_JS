@@ -28,7 +28,7 @@ function appendRecipe(url, generate){
 
                     button.addEventListener("click", ()=>{
                         ALL_RECIPE.innerHTML = ""
-                        appendRecipe(API_URL)
+                        appendRecipe(API_URL, "active")
                     })  
                 }
 
@@ -60,12 +60,15 @@ function appendRecipe(url, generate){
                 h22 = document.createElement("h2")
                 h22.innerHTML = "Ingrédients:"
                 ul = document.createElement("ul")
+                console.log(data.idMeal)
                 for (let i = 1; i <= 20; i++) {
-                    if(data[`strIngredient${i}`] === undefined)
+                    if(data[`strIngredient${i}`] === undefined || data[`strIngredient${i}`] === null)
                         return false;
-                    if((data[`strIngredient${i}`]) != ""){
+                    if((data[`strIngredient${i}`]) != "" ){
                         li = document.createElement("li")
-                        li.innerHTML = data[`strIngredient${i}`] + " - " + data[`strMeasure${i}`]
+                        li.innerHTML = data[`strIngredient${i}`] 
+                        if(data[`strMeasure${i}`] != "")
+                            li.innerHTML +=  " - " + data[`strMeasure${i}`]
                         ul.appendChild(li)
                     }
                 }   
@@ -87,9 +90,19 @@ function appendRecipe(url, generate){
                 ALL_RECIPE.appendChild(section)
 
                 MAIN.appendChild(ALL_RECIPE)
+
+                hearts = document.querySelectorAll(".fa-heart")
+                hearts.forEach(data => data.addEventListener("click", () => {
+                    data.parentElement.nextElementSibling.style.display = "block"
+                }))
+
+                close = document.querySelectorAll(".fa-close")
+                close.forEach(data => data.addEventListener("click", () => {
+                    data.parentElement.parentElement.style.display = "none"
+                }))
             }
-        else
-            alert("Pas trouvé")
+        // else
+        //     console.log("Pas trouvé")
     }))
 }
 
@@ -100,27 +113,21 @@ SEARCH.addEventListener("input", () => {
     
     if(SEARCH.value != ""){
         if(isNaN(SEARCH.value)){    //strings
-            fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {
-                ALL_RECIPE.innerHTML = ""
-                appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
-            }))
-            hearts = document.querySelectorAll(".fa-heart")
-           console.log(hearts)
-            hearts.forEach(data => data.addEventListener("click", () => {
-                alert("hi")
-                data.parentElement.nextElementSibling.style.display = "block"
-            }))
-            console.dir(hearts)
-
-            close = document.querySelectorAll(".fa-close")
-            close.forEach(data => data.addEventListener("click", () => {
-                data.parentElement.nextElementSibling.style.display = "none"
-            }))
+            if(SEARCH.value.length > 1)
+                fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {
+                    ALL_RECIPE.innerHTML = ""
+                    appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
+                }))
         }
         else{                       //numbers
-            fetch(API_FILTER_BY_ID + SEARCH.value).then(response => response.json().then(data => {
-                ALL_RECIPE.innerHTML = ""
-                appendRecipe(API_FILTER_BY_ID + SEARCH.value, "unactive")
+            if(SEARCH.value.length == 5)
+                fetch(API_FILTER_BY_ID + SEARCH.value).then(response => response.json().then(data => {
+                if(data.meals !== null){
+                    ALL_RECIPE.innerHTML = ""
+                    appendRecipe(API_FILTER_BY_ID + SEARCH.value, "unactive")
+                }
+                else
+                    notFound()
             }))
         }
     }
@@ -131,3 +138,10 @@ SEARCH.addEventListener("input", () => {
     
 })
 
+
+function notFound(){
+    h1 = document.createElement("h1")
+    h1.innerHTML = "Not found !"
+    h1.style.color = "red"
+    ALL_RECIPE.appendChild(h1)
+}
