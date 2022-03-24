@@ -5,6 +5,7 @@ const SEARCH_API = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a
 const MAIN = document.querySelector("main")
 const LOADER = document.querySelector(".loader")
 const SEARCH = document.querySelector("input[type='search']")
+const TOP_ARROW = document.querySelector("a[href='#header']")
 
 // ------------------------------------------------------------------------------------BODY
 addFilms(API_URL + 1)
@@ -82,6 +83,13 @@ const scroll = function scroll(){
             addFilms(API_URL + page)
         }, 2000)
     }
+
+    console.log(scrollTop + clientHeight)
+    if(scrollTop + clientHeight > 10000)
+        TOP_ARROW.firstChild.classList.add("show")
+    else
+        TOP_ARROW.firstChild.classList.remove("show")
+
 }
 // ------------------------------------------------------------------------------------EVENTS
 let page = 1
@@ -89,7 +97,7 @@ window.addEventListener("scroll", scroll)
 
 SEARCH.addEventListener("input", () => {
 
-    if(SEARCH.value.length != ""){
+    if(SEARCH.value.length != "" && SEARCH.value.length > 2 ){
         fetch(SEARCH_API + SEARCH.value).then(response => response.json().then(data => {
             if(data.results.length > 0){
                 MAIN.innerHTML = ""
