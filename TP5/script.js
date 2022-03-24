@@ -1,17 +1,15 @@
-const API_URL ="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
-const API_URL2 ="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=2";
+// ------------------------------------------------------------------------------------DECLARATIONS
+const API_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=";
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
-const SEARCH_API ="https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+const SEARCH_API = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 const MAIN = document.querySelector("main")
+const LOADER = document.querySelector(".loader")
 const SEARCH = document.querySelector("input[type='search']")
 
-addFilms(API_URL)
+// ------------------------------------------------------------------------------------BODY
+addFilms(API_URL + 1)
 
-window.addEventListener("scroll", ()=>{
-    if(window.scrollY  > 2500)
-        addFilms(API_URL2)
-})
-
+// ------------------------------------------------------------------------------------FUNCTIONS
 function notFound(){
     MAIN.innerHTML = ""
     h1 = document.createElement("h1")
@@ -70,12 +68,34 @@ function addFilms(data){
     )
 }
 
+const scroll = function scroll(){
+    const { 
+        scrollTop, 
+        scrollHeight, 
+        clientHeight 
+    } = document.documentElement
+
+    if(scrollTop + clientHeight >= scrollHeight - 5)  {  
+        page++
+        LOADER.classList.add("show")
+        setTimeout(function(){
+            addFilms(API_URL + page)
+        }, 2000)
+    }
+}
+// ------------------------------------------------------------------------------------EVENTS
+let page = 1
+window.addEventListener("scroll", scroll)
+
 SEARCH.addEventListener("input", () => {
+
     if(SEARCH.value.length != ""){
         fetch(SEARCH_API + SEARCH.value).then(response => response.json().then(data => {
             if(data.results.length > 0){
                 MAIN.innerHTML = ""
                 addFilms(SEARCH_API + SEARCH.value)
+                window.removeEventListener("scroll", scroll)
+                LOADER.classList.remove("show")
             }       
             else
                 notFound()
@@ -83,7 +103,10 @@ SEARCH.addEventListener("input", () => {
     }
     else{
         MAIN.innerHTML = ""
-        addFilms(API_URL)
+        addFilms(API_URL+1)
+        page = 1
+        window.addEventListener("scroll", scroll)
     }
 })
+
 
