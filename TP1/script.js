@@ -2,7 +2,7 @@ const notifications = document.getElementById("notifications");
 const allButtons = buttons.querySelectorAll("button");
 const tab = ["sweet", "gorgeous", "handsome", "pretty", "beautiful", "amazing", "great", "wonderful", "simple", "lovely", "stunning", "slaying"];
 
-//EVents ---------------------------------------------------------------------------
+//Events ---------------------------------------------------------------------------
 allButtons.forEach(button => button.addEventListener("click", () => {
         add(button)
     })
@@ -11,15 +11,21 @@ allButtons.forEach(button => button.addEventListener("click", () => {
 //Functions ---------------------------------------------------------------------------
 function randomNumber(min, max){ return Math.floor(Math.random() * (max - min)) + min; }
 
+let i=0
 function add(button){
 
-    id = button.value;
+    id = i++;
 
     span = document.createElement("span");
-    span.innerText =  tab[randomNumber(0, tab.length)].toUpperCase() + " !";
     span.id = id;
+    span.setAttribute("class", button.value)
+    span.innerText =  tab[randomNumber(0, tab.length)].toUpperCase() + " !";
     
     notifications.appendChild(span);
     
     setTimeout(`document.getElementById("${id}").remove()` , 1000)
 }
+
+// Accéder via du code JavaScript
+// var article = document.getElementById('voitureelectrique');
+// ex: article.dataset.columns

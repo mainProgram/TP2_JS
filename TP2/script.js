@@ -1,14 +1,9 @@
 //--------------------------------------------------------------------------------------------------DECLARATIONS
-const Allimg = document.querySelectorAll("img")
-const header = document.querySelector(".header")
-const sidebar = document.querySelector(".sidebar")
-const wrapper = document.querySelector(".wrapper")
-const sidebarBtn = document.querySelector(".sidebar-btn")
-const sidebarMenu = document.querySelector(".sidebar-menu")
-const AllSubMenu = document.querySelectorAll(".sub-menu")
-const mainContainer = document.querySelector(".main-container")
-
-const tabObjets = [
+const WRAPPER = document.querySelector(".wrapper")
+const SIDEBAR_BTN = document.querySelector(".sidebar-btn")
+const SIDEBAR_MENU = document.querySelector(".sidebar-menu")
+const MAIN_CONTAINER = document.querySelector(".main-container")
+const TAB_OBJETS = [
     {
         id: "",
         class: "item",
@@ -199,102 +194,107 @@ const tabObjets = [
         }
     }
 ]
-//--------------------------------------------------------------------------------------------------HTML STRUCTURATION
-tabObjets.forEach(element => {
-    li = document.createElement("li")
-    li.setAttribute("class", element.class)
-    li.setAttribute("id", element.id)
-
-    a = document.createElement("a")
-    a.setAttribute("href", element.a.href)
-    a.setAttribute("class", element.a.class)
-
-    i1 = document.createElement("i")
-    i1.setAttribute("class", element.firstIcon)
-
-    span = document.createElement("span")
-    span.innerHTML =  element.span
-
-    small = document.createElement("small")
-    small.innerHTML = element.small.text
-    small.setAttribute("class", element.small.class)
-
-    i2 = document.createElement("i")
-    i2.setAttribute("class", element.secondIcon)
-
-    a.appendChild(i1)
-    span.appendChild(small)
-    span.appendChild(i2)
-    a.appendChild(span)
-
-    var div = document.createElement("div")
-    div.setAttribute("class", element.div.class)
-
-    for (let i = 0; i < 3; i++) {
-
-        a3 = document.createElement("a")
-        a3.setAttribute("href", element.div.a)
-
-        i3 = document.createElement("i")
-        i3.setAttribute("class", element.div.i)
-
-        span3 = document.createElement("span")
-        span3.innerHTML =  element.div.span  
-
-        a3.appendChild(i3)
-        a3.appendChild(span3)
-        div.appendChild(a3)
-    } 
-
-    li.appendChild(a)
-    li.appendChild(div)
-
-    sidebarMenu.appendChild(li)
-});
-
 
 //--------------------------------------------------------------------------------------------------FUNCTIONS
+function setMenu(Tableau){
+    Tableau.forEach(element => {
+        li = document.createElement("li")
+        li.setAttribute("class", element.class)
+        li.setAttribute("id", element.id)
+    
+        a = document.createElement("a")
+        a.setAttribute("href", element.a.href)
+        a.setAttribute("class", element.a.class)
+    
+        i1 = document.createElement("i")
+        i1.setAttribute("class", element.firstIcon)
+    
+        span = document.createElement("span")
+        span.innerHTML =  element.span
+    
+        small = document.createElement("small")
+        small.innerHTML = element.small.text
+        small.setAttribute("class", element.small.class)
+    
+        i2 = document.createElement("i")
+        i2.setAttribute("class", element.secondIcon)
+    
+        a.appendChild(i1)
+        span.appendChild(small)
+        span.appendChild(i2)
+        a.appendChild(span)
+    
+        var div = document.createElement("div")
+        div.setAttribute("class", element.div.class)
+    
+        for (let i = 0; i < 3; i++) {
+    
+            a3 = document.createElement("a")
+            a3.setAttribute("href", element.div.a)
+    
+            i3 = document.createElement("i")
+            i3.setAttribute("class", element.div.i)
+    
+            span3 = document.createElement("span")
+            span3.innerHTML =  element.div.span  
+    
+            a3.appendChild(i3)
+            a3.appendChild(span3)
+            div.appendChild(a3)
+        } 
+    
+        li.appendChild(a)
+        li.appendChild(div)
+        div.setAttribute("hidden", "hidden")
+    
+        SIDEBAR_MENU.appendChild(li)
+    });
+}
 
+
+//---------------------------------------------------------------------------------------------------BODY
+setMenu(TAB_OBJETS)
 
 //--------------------------------------------------------------------------------------------------EVENTS
 // LES FLECHES
-const drop_down_arrows = document.querySelectorAll(".fa-angle-left")
-drop_down_arrows.forEach((element) => element.addEventListener("click", ()=>{
+const ANGLE_LEFT_ARROWS = document.querySelectorAll(".fa-angle-left")
+ANGLE_LEFT_ARROWS.forEach((element) => element.addEventListener("click", ()=>{
     element.classList.toggle("left")
+    element.parentElement.parentElement.nextElementSibling.toggleAttribute("hidden")
 }))
 
-
-
 // LE BOUTON BURGER
-sidebarBtn.addEventListener("click", ()=>{
-    wrapper.classList.toggle("collapse")
+SIDEBAR_BTN.addEventListener("click", ()=>{
+    WRAPPER.classList.toggle("collapse")
 })
 
-
-const AllMenuBtn = document.querySelectorAll(".menu-btn")
 // HOVER SUR LES ICONES DU SIDEBAR
-AllMenuBtn.forEach((element) => element.addEventListener("mouseover", ()=>{
-        wrapper.classList.remove("collapse")
+const ALL_MENU_BTN = document.querySelectorAll(".menu-btn")
+ALL_MENU_BTN.forEach((element) => element.addEventListener("mouseover", ()=>{
+        WRAPPER.classList.remove("collapse")
     })
 )
 
 // HOVER SUR LES ICONES DU SUB MENU
-AllSubMenu.forEach((element) => element.addEventListener("mouseover", ()=>{
-    wrapper.classList.remove("collapse")
+const ALL_SUB_MENU = document.querySelectorAll(".sub-menu")
+ALL_SUB_MENU.forEach((element) => element.addEventListener("mouseover", ()=>{
+    WRAPPER.classList.remove("collapse")
 })
 )
 
 // HOVER SUR LES IMG DU SIDEBAR
-Allimg.forEach((element) => element.addEventListener("mouseover", ()=>{
-    wrapper.classList.remove("collapse")
+const ALL_IMG = document.querySelectorAll("img")
+ALL_IMG.forEach((element) => element.addEventListener("mouseover", ()=>{
+    WRAPPER.classList.remove("collapse")
 })
 )
 
 // COLLAPSE WHEN NOT HOVERING THE MENU
 window.addEventListener('mouseover', function(e)
 { 
-    if(e.target == mainContainer)
-        wrapper.classList.add("collapse")
+    if(e.target == MAIN_CONTAINER)
+        WRAPPER.classList.add("collapse")
     else
         return false;
 });
+

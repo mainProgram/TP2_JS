@@ -1,26 +1,25 @@
 //--------------------------------------------------------------------------------------------------DECLARATIONS
-const zoom_result = document.querySelector(".img-zoom-result")
-const slides = document.querySelector(".slides")
-const slider = document.querySelector(".slider")
-const left = document.querySelector("#left")
-const right = document.querySelector("#right")
-const length = 11
+const ZOOM_RESULT = document.querySelector(".img-zoom-result")
+const SLIDES = document.querySelector(".slides")    
+const LEFT_ARROW = document.querySelector("#left")        
+const RIGHT_ARROW = document.querySelector("#right")      
+const NUMBER_OF_PICTURES = 11                                   
 
 //--------------------------------------------------------------------------------------------------HTML STRUCTURATION
 //INPUTS RADIO
-for (let i = 1; i <= length; i++) {
+for (let i = 1; i <= NUMBER_OF_PICTURES; i++) {
     input = document.createElement("input")
     input.setAttribute("type", "radio")
     input.setAttribute("name", "radio")
     input.setAttribute("id", "radio"+i)
-    if(i==1)
+    if(i==1) //CHECK THE FIRST IMG 
         input.setAttribute("checked", true)
 
-    slides.appendChild(input)
+    SLIDES.appendChild(input)
 }
 
 //IMAGES
-for (let i = 1; i <= length; i++) {
+for (let i = 1; i <= NUMBER_OF_PICTURES; i++) {
     div = document.createElement("div")
     div.classList.add("slide")
     if(i==1)
@@ -32,31 +31,31 @@ for (let i = 1; i <= length; i++) {
     img.setAttribute("id", "img"+i)
 
     div.appendChild(img)
-    slides.appendChild(div)
+    SLIDES.appendChild(div)
 }
 
-const navigationAuto = document.createElement("div")
-navigationAuto.setAttribute("class", "navigation-auto")
-for (let i = 1; i <= length; i++) {
-    //DIV AUTO
+//DIV AUTO
+const NAVIGATION_AUTO = document.createElement("div")
+NAVIGATION_AUTO.setAttribute("class", "navigation-auto")
+for (let i = 1; i <= NUMBER_OF_PICTURES; i++) {
     div = document.createElement("div")
     div.classList.add("auto"+i)
 
-    navigationAuto.appendChild(div)
-    slides.appendChild(navigationAuto)
+    NAVIGATION_AUTO.appendChild(div)
+    SLIDES.appendChild(NAVIGATION_AUTO)
 }  
 
 
-const navigationManual = document.createElement("div")
-navigationManual.setAttribute("class", "navigation-manual")
-for (let i = 1; i <= length; i++) {
-    //DIV MANUAL
+//DIV MANUAL
+const NAVIGATION_MANUAL = document.createElement("div")
+NAVIGATION_MANUAL.setAttribute("class", "navigation-manual")
+for (let i = 1; i <= NUMBER_OF_PICTURES; i++) {
     label = document.createElement("label")
     label.classList.add("manual")
     label.setAttribute("for", "radio"+i)
 
-    navigationManual.appendChild(label)
-    slides.appendChild(navigationManual)
+    NAVIGATION_MANUAL.appendChild(label)
+    SLIDES.appendChild(NAVIGATION_MANUAL)
 }  
 
 //--------------------------------------------------------------------------------------------------EVENTS
@@ -67,25 +66,25 @@ setInterval(function(){
     
     compteur++;
 
-    if(compteur > length){
+    if(compteur > NUMBER_OF_PICTURES){
         compteur = 1
-        right.style.display = "none"
+        RIGHT_ARROW.style.display = "none"
     }
     else if(compteur - 1  == 1){
-        left.style.display = "none"
-        right.style.display = "block"
+        LEFT_ARROW.style.display = "none"
+        RIGHT_ARROW.style.display = "block"
     }
     else{
-        left.style.display = "block"
-        right.style.display = "block"
+        LEFT_ARROW.style.display = "block"
+        RIGHT_ARROW.style.display = "block"
     }
       
 }, 3000);
 
-//EVERY 5 SECONDS ZOOM FOT ALL IMAGES
-const allImages = slides.querySelectorAll("img");
-allImages.forEach((image, i) => image.addEventListener("mousemove", () => {
-        zoom_result.style.display = "block";
+//EVERY 5 SECONDS ZOOM FOR ALL IMAGES
+const ALL_IMAGES = SLIDES.querySelectorAll("img");
+ALL_IMAGES.forEach((image, i) => image.addEventListener("mousemove", () => {
+        ZOOM_RESULT.style.display = "block";
         imageZoom("img"+(i+1), "myresult");
     })
 )
@@ -93,15 +92,15 @@ allImages.forEach((image, i) => image.addEventListener("mousemove", () => {
 //REMOVE THE ZOOM RESULT
 window.addEventListener("mouseover", (e)=>{
     if(e.target == document.body)
-        zoom_result.style.display = "none"
+        ZOOM_RESULT.style.display = "none"
     else
         return false;
     console.log(e.target)
 })
 
 //WHEN I CLICK ON A RADIO STAY THERE N UPDATE COMPTEUR
-const labels = document.querySelectorAll("label")
-labels.forEach((label, i) => label.addEventListener("click", () => {
+const LABELS = document.querySelectorAll("label")
+LABELS.forEach((label, i) => label.addEventListener("click", () => {
         document.getElementById("radio"+(i+1)).checked = true;
         compteur = i + 1
         // console.dir(label.control.checked)
@@ -109,9 +108,9 @@ labels.forEach((label, i) => label.addEventListener("click", () => {
 )
 
 var id = 0
-// WHEN I CLICK ON THE RIGHT BUTTON
-right.addEventListener("click", ()=>{
-    labels.forEach((label, i) => {
+// WHEN I CLICK ON THE RIGHT_ARROW BUTTON
+RIGHT_ARROW.addEventListener("click", ()=>{
+    LABELS.forEach((label, i) => {
         if(label.control.checked == true){
             id = i+2
             return false
@@ -122,9 +121,9 @@ right.addEventListener("click", ()=>{
     compteur = id
 })
 
-// WHEN I CLICK ON THE RIGHT BUTTON
-left.addEventListener("click", ()=>{
-    labels.forEach((label, i) => {
+// WHEN I CLICK ON THE LEFT_ARROW BUTTON
+LEFT_ARROW.addEventListener("click", ()=>{
+    LABELS.forEach((label, i) => {
         if(label.control.checked == true){
             id = i
             return false
@@ -199,7 +198,7 @@ function imageZoom(imgID, resultID) {
 
 // function isOneAtLeastChecked(array) {
 //     newArray = array.filter(checked)
-//     if (newArray.length == 0)
+//     if (newArray.NUMBER_OF_PICTURES == 0)
 //         return false
 //     return true
 // }

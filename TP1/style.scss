@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+span[data-color="grey"]{
+    color: grey;
+}
+
 body{
     height: 100vh;
     display: flex;
@@ -79,16 +83,16 @@ button[value="orange"]{
         border: 1px solid;
         border: none;
     }
-    #green{
+    .green{
         background-color: green;
     }
-    #red{
+    .red{
         background-color: red;
     }
-    #orange{
+    .orange{
         background-color: orange;
     }
-    #blue{
+    .blue{
         background-color: rgb(57, 145, 228);
     }
 }

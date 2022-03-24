@@ -7,6 +7,10 @@
           box-sizing: border-box;
 }
 
+span[data-color="grey"] {
+  color: grey;
+}
+
 body {
   height: 100vh;
   display: -webkit-box;
@@ -104,19 +108,19 @@ button[value="orange"] {
   border: none;
 }
 
-.notifications #green {
+.notifications .green {
   background-color: green;
 }
 
-.notifications #red {
+.notifications .red {
   background-color: red;
 }
 
-.notifications #orange {
+.notifications .orange {
   background-color: orange;
 }
 
-.notifications #blue {
+.notifications .blue {
   background-color: #3991e4;
 }
 
