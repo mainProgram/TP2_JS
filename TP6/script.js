@@ -5,12 +5,14 @@ const API_URL = "https://www.themealdb.com/api/json/v1/1/random.php"
 const API_FILTER_BY_ID = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 const API_FILTER_BY_NAME = "https://www.themealdb.com/api/json/v1/1/search.php?s="
 
+let id = 0
 
 function appendRecipe(url, generate){
     fetch(url).then(response => response.json().then(datas => {
         if(datas.meals !== null)
             for (let data of datas.meals) 
             {
+                id++
                 section = document.createElement("section")
                 section.setAttribute("class", "recipe")
 
@@ -41,6 +43,7 @@ function appendRecipe(url, generate){
 
                 divInfos = document.createElement("div")
                 divInfos.setAttribute("class", "infos")
+                divInfos.setAttribute("id", id)
                 divTitle2 = document.createElement("div")
                 divTitle2.setAttribute("class", "title2")
                 h1 = document.createElement("h1")
@@ -84,16 +87,6 @@ function appendRecipe(url, generate){
                 ALL_RECIPE.appendChild(section)
 
                 MAIN.appendChild(ALL_RECIPE)
-                
-                const HEART = document.querySelector(".fa-heart")
-
-                HEART.addEventListener("click", () => {
-                    divInfos.style.display = "block"
-                })
-
-                i2.addEventListener("click", () => {
-                    divInfos.style.display = "none"
-                })
             }
         else
             alert("Pas trouvé")
@@ -102,13 +95,26 @@ function appendRecipe(url, generate){
 
 appendRecipe(API_URL, "active")
 
-SEARCH.addEventListener("input", () => {
 
+SEARCH.addEventListener("input", () => {
+    
     if(SEARCH.value != ""){
         if(isNaN(SEARCH.value)){    //strings
             fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {
                 ALL_RECIPE.innerHTML = ""
                 appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
+            }))
+            hearts = document.querySelectorAll(".fa-heart")
+           console.log(hearts)
+            hearts.forEach(data => data.addEventListener("click", () => {
+                alert("hi")
+                data.parentElement.nextElementSibling.style.display = "block"
+            }))
+            console.dir(hearts)
+
+            close = document.querySelectorAll(".fa-close")
+            close.forEach(data => data.addEventListener("click", () => {
+                data.parentElement.nextElementSibling.style.display = "none"
             }))
         }
         else{                       //numbers
@@ -124,3 +130,4 @@ SEARCH.addEventListener("input", () => {
     }
     
 })
+
