@@ -27,6 +27,14 @@
         transform: scale(1.5);
     }
 }
+
+#search{
+    font-size: 30px;
+    color: #7378c5;
+    margin-left: 1%;
+    cursor: pointer;
+}
+
 $mauve-fonce: #22254b;
 $mauve-clair: #373b69;
 
@@ -85,6 +93,11 @@ header{
         &:focus{
             outline: none;
         }
+    }
+
+    .search{
+        align-items: center;
+        display: flex;
     }
 }
 
