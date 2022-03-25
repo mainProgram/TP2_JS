@@ -1,12 +1,14 @@
+// ------------------------------------------------------------------------------------DECLARATIONS
 const MAIN = document.querySelector("main")
 const SEARCH = document.querySelector("input[type='search']")
 const ALL_RECIPE = document.querySelector(".allRecipe")
 const API_URL = "https://www.themealdb.com/api/json/v1/1/random.php"
 const API_FILTER_BY_ID = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 const API_FILTER_BY_NAME = "https://www.themealdb.com/api/json/v1/1/search.php?s="
-
+const ICON_SEARCH = document.querySelector(".fa-search")
 let id = 0
 
+// ------------------------------------------------------------------------------------FUNCTIONS
 function appendRecipe(url, generate){
     fetch(url).then(response => response.json().then(datas => {
         if(datas.meals !== null)
@@ -106,9 +108,17 @@ function appendRecipe(url, generate){
     }))
 }
 
+function notFound(){
+    h1 = document.createElement("h1")
+    h1.innerHTML = "Not found !"
+    h1.setAttribute("class", "red")
+    ALL_RECIPE.appendChild(h1)
+}
+
+// ------------------------------------------------------------------------------------BODY
 appendRecipe(API_URL, "active")
 
-
+// ------------------------------------------------------------------------------------EVENTS
 SEARCH.addEventListener("input", () => {
     
     if(SEARCH.value != ""){
@@ -138,10 +148,32 @@ SEARCH.addEventListener("input", () => {
     
 })
 
+ICON_SEARCH.addEventListener("click", () => {
+    if(SEARCH.value != ""){
+        if(isNaN(SEARCH.value)){    //strings
+            fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {                
+                if(data.meals !== null){
+                    ALL_RECIPE.innerHTML = ""
+                    appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
+                }
+                else
+                    notFound()
+            }))
+        }
+        else{                       //numbers
+            fetch(API_FILTER_BY_ID + SEARCH.value).then(response => response.json().then(data => {
+                if(data.meals !== null){
+                    ALL_RECIPE.innerHTML = ""
+                    appendRecipe(API_FILTER_BY_ID + SEARCH.value, "unactive")
+                }
+                else
+                    notFound()
+            }))
+        }
+    }
+    else{
+        ALL_RECIPE.innerHTML = ""
+        appendRecipe(API_URL, "active")
+    }  
+})
 
-function notFound(){
-    h1 = document.createElement("h1")
-    h1.innerHTML = "Not found !"
-    h1.style.color = "red"
-    ALL_RECIPE.appendChild(h1)
-}
