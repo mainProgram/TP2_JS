@@ -109,10 +109,20 @@ function appendRecipe(url, generate){
 }
 
 function notFound(){
+    ALL_RECIPE.innerHTML = ""
     h1 = document.createElement("h1")
     h1.innerHTML = "Not found !"
     h1.setAttribute("class", "red")
     ALL_RECIPE.appendChild(h1)
+}
+
+function searchByIdAndName(value, data){
+    if(data !== null){
+        ALL_RECIPE.innerHTML = ""
+        appendRecipe(value)
+    }
+    else
+        notFound()
 }
 
 // ------------------------------------------------------------------------------------BODY
@@ -123,21 +133,15 @@ SEARCH.addEventListener("input", () => {
     
     if(SEARCH.value != ""){
         if(isNaN(SEARCH.value)){    //strings
-            if(SEARCH.value.length > 1)
+            if(SEARCH.value.length > 2)
                 fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {
-                    ALL_RECIPE.innerHTML = ""
-                    appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
+                    searchByIdAndName(API_FILTER_BY_NAME + SEARCH.value, data.meals)
                 }))
         }
         else{                       //numbers
             if(SEARCH.value.length == 5)
                 fetch(API_FILTER_BY_ID + SEARCH.value).then(response => response.json().then(data => {
-                if(data.meals !== null){
-                    ALL_RECIPE.innerHTML = ""
-                    appendRecipe(API_FILTER_BY_ID + SEARCH.value, "unactive")
-                }
-                else
-                    notFound()
+                    searchByIdAndName(API_FILTER_BY_ID + SEARCH.value, data.meals)
             }))
         }
     }
@@ -152,22 +156,12 @@ ICON_SEARCH.addEventListener("click", () => {
     if(SEARCH.value != ""){
         if(isNaN(SEARCH.value)){    //strings
             fetch(API_FILTER_BY_NAME + SEARCH.value).then(response => response.json().then(data => {                
-                if(data.meals !== null){
-                    ALL_RECIPE.innerHTML = ""
-                    appendRecipe(API_FILTER_BY_NAME + SEARCH.value, "unactive")
-                }
-                else
-                    notFound()
+                searchByIdAndName(API_FILTER_BY_NAME + SEARCH.value, data.meals)
             }))
         }
         else{                       //numbers
             fetch(API_FILTER_BY_ID + SEARCH.value).then(response => response.json().then(data => {
-                if(data.meals !== null){
-                    ALL_RECIPE.innerHTML = ""
-                    appendRecipe(API_FILTER_BY_ID + SEARCH.value, "unactive")
-                }
-                else
-                    notFound()
+                searchByIdAndName(API_FILTER_BY_ID + SEARCH.value, data.meals)
             }))
         }
     }
