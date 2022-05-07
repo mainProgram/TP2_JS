@@ -170,7 +170,7 @@ main {
 }
 
 main .film {
-  width: 380px;
+  width: 360px;
   margin: 1em;
   background-color: #22254b;
   -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);

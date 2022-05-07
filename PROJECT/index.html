@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>PROJECT</title>
 </head>
-<body>
+<body  id="particles-js" >
 
     <header>    
         <h1>My Task Manager  <span class="material-icons md-24">add_task</span></h1>
@@ -24,14 +24,14 @@
                 <span class="material-icons" id="trash">restore_from_trash</span>
             </div>
             <div class="save-state">
-                <button>Sauvegarder Etat</button>
+                <button>Save state</button>
             </div>
             <div class="list-states">
-                <button>Lister les états</button>
+                <button>List all states</button>
             </div>
             <div class="">
                 <label for="">Autosave&nbsp;</label>
-                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" id="" checked>
             </div>
             <div class="close">
                 <span class="material-icons md-24">keyboard_double_arrow_up</span>
@@ -43,8 +43,8 @@
          -->
     </header>
 
-    <main>
-          <div class="trash">
+    <main  id="particles-js" >
+          <div class="trash" >
             <div class="head">
                 <h2>Trash</h2>
             </div>
@@ -53,17 +53,17 @@
         </div>
         <div class="list-states-body">
             <div class="head">
-                <h2>Liste des états</h2>
+                <h2>List of all states</h2>
             </div>
             <div class="body">
-                <div>
+                <!-- <div>
                     <span class="material-icons restore-state">restore</span>
                     <p><span>Date:</span><span> 12-04-2002</span></p>
-                    <p><span>Heure:</span><span> 12:04:22</span></p>
-                    <p><span>Nombre de Colonnes: </span><span>4</span></p>
-                    <p><span>Nombre de Tâches total: </span><span>14</span></p>
-                    <p><span>Nombre de Tâches archivées: </span><span>4</span></p>
-                </div>
+                    <p><span>Time:</span><span> 12:04:22</span></p>
+                    <p><span>Number of tasks: </span><span>14</span></p>
+                    <p><span>Number of columns: </span><span>4</span></p>
+                    <p><span>Number of archived tasks: </span><span>4</span></p>
+                </div> -->
             </div>
         </div>
       
@@ -160,8 +160,10 @@
         </div>
     </div>
 
-    <script src="variables.js"></script>
-    <script src="functions.js"></script>
-    <script src="script.js"></script>
+    <script src="js/variables.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

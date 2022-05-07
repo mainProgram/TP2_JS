@@ -1,4 +1,5 @@
-//--------------------------------------------------------------------------------------------------DECLARATIONS
+const MAIN = document.querySelector("main")
+const API_URL = "http://localhost/my_task/public/?controller=tache&action="
 const HEADER = document.querySelector("header")
 const SECTION = document.querySelector("section")
 const CLOSE_ICON_HEADER = document.querySelector(".close")
@@ -20,5 +21,4 @@ const BTN_CLOSE_ALERT = document.querySelector(".close-alert")
 const SAVE_STATE = document.querySelector(".save-state")
 const LIST_BODY = document.querySelector(".list-states-body")
 const LIST_STATES_BTN = document.querySelector(".list-states")
-
 const TASK_INFOS = [TASK_DATE, TASK_DESCRIPTION, TASK_START_TIME, TASK_ENDING_TIME]
